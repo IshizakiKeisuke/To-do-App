@@ -32,6 +32,7 @@
     <None Remove="ClientApp\src\app\all-items\all_item.components.ts" />
     <None Remove="ClientApp\src\app\all-items\file.ts" />
     <None Remove="ClientApp\src\app\product.ts" />
+    <None Remove="ClientApp\src\index.css" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
