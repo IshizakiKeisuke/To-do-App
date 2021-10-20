@@ -1,2 +1,11 @@
 <!DOCTYPE html>
-<h1>all-item</h1>
+<h1 class="title">　タスク一覧　</h1>
+
+<div *ngFor="let to_do of to_do">
+  <table border >
+    <tr>
+      <td><div class="text">{{to_do.to}}</div></td>
+    </tr>
+  </table>
+
+</div>
