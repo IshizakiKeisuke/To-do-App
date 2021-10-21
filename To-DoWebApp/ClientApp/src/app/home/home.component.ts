@@ -12,10 +12,20 @@ import { to_do } from '../product';
 export class HomeComponent {
   to_do = to_do;
 
+  id_count = to_do.length;
   
   input_task = new FormGroup({
     to : new FormControl(''), 
   })
 
+  inputItem(): void {
+   /* var input_task = new FormGroup({
+      to: new FormControl(''), 
+    })*/
+    // this.to_do.push({ id: this.id_count, to: JSON.stringify(input_task.value) });
+    this.to_do.push({ id: this.id_count ,to:"otamesi"})
+
+  }
+  
 
 }

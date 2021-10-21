@@ -1,7 +1,13 @@
  body{ 
    background-color: #F2E0CF;
    height:100%;
- } 
+ }
+
+button {
+  color: aliceblue;
+  background-color: #AF6060;
+  margin: 10px;
+}
 
  div {
   color: aliceblue;;
