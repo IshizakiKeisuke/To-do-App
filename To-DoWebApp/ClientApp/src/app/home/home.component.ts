@@ -19,13 +19,7 @@ export class HomeComponent {
   })
 
   inputItem(): void {
-   /* var input_task = new FormGroup({
-      to: new FormControl(''), 
-    })*/
-    // this.to_do.push({ id: this.id_count, to: JSON.stringify(input_task.value) });
-    this.to_do.push({ id: this.id_count ,to:"otamesi"})
-
+    this.to_do.push({ to: this.input_task.value.to });
+    console.log(this.id_count);
   }
-  
-
 }

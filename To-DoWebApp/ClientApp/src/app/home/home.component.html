@@ -1,13 +1,10 @@
 <body>
   <!--<input-task></input-task><br>-->
-  <!--<form method="post" [formGroup]="loginForm" (ngSubmit)="inputItem()">
-    <input type="text" size="40" placeholder="to" formControlName="to">
+  <form method="post" [formGroup]="input_task" (ngSubmit)="inputItem()">
+    <input type="text" size="40" formControlName="to">
     <button type="submit">追加</button>
-  </form>-->
-  <form method="post" (ngSubmit)="inputItem()">
-  <input type="text" size="40" >
-  <button type="submit">追加</button>
   </form>
+  
   <hr width="1000">
 
   <!--一覧表示-->
