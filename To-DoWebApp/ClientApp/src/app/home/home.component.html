@@ -1,5 +1,20 @@
 <body>
-<input-task></input-task><br>
-  <p>-------------------------------------------------------------------</p>
-<all-item></all-item>
+  <input-task></input-task><br>
+
+
+
+
+  <hr width="1000">
+
+  <h1 class="title">　タスク一覧　</h1>
+
+  <div *ngFor="let to_do of to_do">
+    <table border >
+      <tr>
+        <td><div class="text">{{to_do.to}}</div></td>
+      </tr>
+    </table>
+  
+  </div>
+  
 </body>
