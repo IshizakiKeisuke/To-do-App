@@ -1,3 +1,21 @@
 <body>
-<all-item></all-item>
+  <form method="post" [formGroup]="input_task" (ngSubmit)="inputItem()">
+    <input type="text" size="40" formControlName="to">
+    <button type="submit">追加</button>
+  </form>
+  
+  <hr width="1000">
+
+  <!--一覧表示-->
+  <h1 class="title">　タスク一覧　</h1>
+
+  <div *ngFor="let to_do of to_do">
+    <table border>
+      <tr>
+        <td><div class="text">{{to_do.to}}</div></td>
+      </tr>
+    </table>
+
+  </div>
+
 </body>
