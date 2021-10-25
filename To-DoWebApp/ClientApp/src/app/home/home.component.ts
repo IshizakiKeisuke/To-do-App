@@ -19,9 +19,17 @@ export class HomeComponent {
   })
 
   inputItem(): void {
-    console.log(this.input_task.value.to.length);
     if(this.input_task.value.to.length>0 && this.input_task.value.to.length<=500){
       this.to_do.push({ to: this.input_task.value.to });
     }
   }
+
+  deleteTask(num:number){
+    console.log(num);
+    to_do.splice(num ,1);
+  }
+
+
+
+
 }

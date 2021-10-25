@@ -9,12 +9,6 @@ button {
   margin: 10px;
 }
 
- div {
-  color: aliceblue;;
-  vertical-align:middle;
-  margin:10px;
-}
-
 table{
   background-color: #AF6060;
   width:800px;
@@ -27,3 +21,19 @@ h1 {
   
 }
 
+div.text{
+  color: aliceblue;;
+  vertical-align:middle;
+  margin:10px;
+}
+
+div.delete {
+  color: aliceblue;
+  background-color: #AF6060;
+  text-align: right;
+}
+
+button.delete{
+  color: aliceblue;
+  background-color: #AF6060;
+}
