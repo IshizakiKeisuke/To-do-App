@@ -3,19 +3,19 @@
     <input type="text" size="40" formControlName="to">
     <button type="submit">追加</button>
   </form>
-  
-  <hr width="1000">
+
+  <hr width="1100">
 
   <!--一覧表示-->
   <h1 class="title">　タスク一覧　</h1>
 
   <div *ngFor="let to_do of to_do; index as i">
-    <table border>
+    <table>
       <tr>
-        <td><div class="text">{{to_do.to}}<div class="delete"><button class="delete" (click)="deleteTask(i)">削除</button></div></div></td>
+        <td><div class="text">{{to_do.to}}<div class="delete"><button (click)="deleteTask(i)">削除</button></div></div></td>
       </tr>
     </table>
-
   </div>
 
+  
 </body>

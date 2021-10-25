@@ -25,7 +25,6 @@ export class HomeComponent {
   }
 
   deleteTask(num:number){
-    console.log(num);
     to_do.splice(num ,1);
   }
 

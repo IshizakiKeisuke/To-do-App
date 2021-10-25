@@ -3,15 +3,22 @@
    height:100%;
  }
 
+
 button {
   color: aliceblue;
   background-color: #AF6060;
   margin: 10px;
+  border: solid 3px #ffffff;
 }
 
-table{
+table {
   background-color: #AF6060;
-  width:800px;
+  width: 800px;
+  border: solid 0.5px #143642;
+}
+
+tr {
+    border: solid 0.5px #143642;
 }
 
 h1 {
@@ -24,7 +31,10 @@ h1 {
 div.text{
   color: aliceblue;;
   vertical-align:middle;
-  margin:10px;
+  margin-left:10px;
+  margin-right:10px;
+  margin-top:10px;
+  font-size:large;
 }
 
 div.delete {
@@ -33,7 +43,5 @@ div.delete {
   text-align: right;
 }
 
-button.delete{
-  color: aliceblue;
-  background-color: #AF6060;
-}
+
+
