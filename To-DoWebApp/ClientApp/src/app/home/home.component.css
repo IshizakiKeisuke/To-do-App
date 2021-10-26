@@ -25,7 +25,7 @@ h1 {
   color: aliceblue;
   background-color: #AF6060;
   display:inline-block;
-  
+  margin:20px;
 }
 
 div.text{
@@ -37,7 +37,7 @@ div.text{
   font-size:large;
 }
 
-div.delete {
+div.listButton {
   color: aliceblue;
   background-color: #AF6060;
   text-align: right;

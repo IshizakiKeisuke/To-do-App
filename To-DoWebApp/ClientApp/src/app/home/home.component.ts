@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormControl } from '@angular/forms';
-import { to_do } from '../product';
+import { cp_to_do, to_do } from '../product';
 
 
 @Component({
@@ -11,8 +11,13 @@ import { to_do } from '../product';
 })
 export class HomeComponent {
   to_do = to_do;
+  cp_to_do = cp_to_do;
 
   id_count = to_do.length;
+
+  //taskStatus = 1;
+  //cpTaskStatus = 0;
+
   
   input_task = new FormGroup({
     to : new FormControl(''), 
@@ -27,6 +32,22 @@ export class HomeComponent {
   deleteTask(num:number){
     to_do.splice(num ,1);
   }
+
+  deleteCpTask(num: number) {
+    cp_to_do.splice(num, 1);
+  }
+
+  mvTask(num: number) {
+    cp_to_do.push(to_do[num]);
+    to_do.splice(num,1);
+  }
+
+  mvCpTask(num:number){
+    to_do.push(cp_to_do[num]);
+    cp_to_do.splice(num,1);
+  }
+
+  //changeShowAllTask(){}
 
 
 
