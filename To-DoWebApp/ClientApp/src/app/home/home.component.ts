@@ -23,4 +23,12 @@ export class HomeComponent {
       this.to_do.push({ to: this.input_task.value.to });
     }
   }
+
+  deleteTask(num:number){
+    to_do.splice(num ,1);
+  }
+
+
+
+
 }

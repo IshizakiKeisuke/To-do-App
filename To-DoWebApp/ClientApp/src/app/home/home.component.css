@@ -3,21 +3,22 @@
    height:100%;
  }
 
+
 button {
   color: aliceblue;
   background-color: #AF6060;
   margin: 10px;
+  border: solid 3px #ffffff;
 }
 
- div {
-  color: aliceblue;;
-  vertical-align:middle;
-  margin:10px;
-}
-
-table{
+table {
   background-color: #AF6060;
-  width:800px;
+  width: 800px;
+  border: solid 0.5px #143642;
+}
+
+tr {
+    border: solid 0.5px #143642;
 }
 
 h1 {
@@ -26,4 +27,21 @@ h1 {
   display:inline-block;
   
 }
+
+div.text{
+  color: aliceblue;;
+  vertical-align:middle;
+  margin-left:10px;
+  margin-right:10px;
+  margin-top:10px;
+  font-size:large;
+}
+
+div.delete {
+  color: aliceblue;
+  background-color: #AF6060;
+  text-align: right;
+}
+
+
 
