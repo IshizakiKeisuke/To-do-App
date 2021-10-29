@@ -21,7 +21,7 @@
     
   </div>
   
-  <div *ngIf="listStatus == 1 ">
+  <div *ngIf="listStatus == TaskStatus.InProgress ">
     <h1>タスク一覧表</h1>
     <div *ngFor="let to_do_list of to_do_list; index as i">
       <table>
@@ -36,7 +36,7 @@
   </div>
 </form>
 
-  <div *ngIf="listStatus == 2 ">
+  <div *ngIf="listStatus == TaskStatus.Complete ">
     <h1>完了タスク</h1>
     <div *ngFor="let cp_to_do_list of cp_to_do_list; index as i">
       <table>

@@ -16,7 +16,12 @@ export class HomeComponent {
 
   id_count = to_do.length;
 
-  listStatus = 0;
+  TaskStatus = {
+    Complete: 'Complete',
+    InProgress: 'InProgress',
+  }
+    listStatus = "false";
+
 
   input_task = new FormGroup({
     to: new FormControl(''),
@@ -48,12 +53,11 @@ export class HomeComponent {
 
   changeShowAllTask() {
     console.log("All task");
-    this.listStatus = 1;
+    this.listStatus ="InProgress";
   }
 
   changeShowCpTask() {
     console.log("Cp task");
-    this.listStatus = 2;
+    this.listStatus = "Complete";
   }
-
 }
