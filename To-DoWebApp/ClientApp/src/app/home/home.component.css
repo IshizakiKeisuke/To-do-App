@@ -1,4 +1,5 @@
- body{ 
+html,
+body{ 
    background-color: #F2E0CF;
    height:100%;
  }
@@ -9,6 +10,14 @@ button {
   background-color: #AF6060;
   margin: 10px;
   border: solid 3px #ffffff;
+}
+
+button:hover {
+  background-color: darkblue;
+}
+
+#selector input{
+  display: none;
 }
 
 table {
@@ -25,7 +34,7 @@ h1 {
   color: aliceblue;
   background-color: #AF6060;
   display:inline-block;
-  
+  margin:20px;
 }
 
 div.text{
@@ -37,7 +46,7 @@ div.text{
   font-size:large;
 }
 
-div.delete {
+div.listButton {
   color: aliceblue;
   background-color: #AF6060;
   text-align: right;
