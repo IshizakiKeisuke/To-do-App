@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 import { cp_to_do, to_do } from '../product';
@@ -9,28 +9,27 @@ import { cp_to_do, to_do } from '../product';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
+
 export class HomeComponent {
-  to_do = to_do;
-  cp_to_do = cp_to_do;
+  to_do_list= to_do;
+  cp_to_do_list= cp_to_do;
 
   id_count = to_do.length;
 
-  //taskStatus = 1;
-  //cpTaskStatus = 0;
+  listStatus = 0;
 
-  
   input_task = new FormGroup({
-    to : new FormControl(''), 
+    to: new FormControl(''),
   })
 
   inputItem(): void {
-    if(this.input_task.value.to.length>0 && this.input_task.value.to.length<=500){
-      this.to_do.push({ to: this.input_task.value.to });
+    if (this.input_task.value.to.length > 0 && this.input_task.value.to.length <= 500) {
+      this.to_do_list.push({ to: this.input_task.value.to });
     }
   }
 
-  deleteTask(num:number){
-    to_do.splice(num ,1);
+  deleteTask(num: number) {
+    to_do.splice(num, 1);
   }
 
   deleteCpTask(num: number) {
@@ -39,17 +38,22 @@ export class HomeComponent {
 
   mvTask(num: number) {
     cp_to_do.push(to_do[num]);
-    to_do.splice(num,1);
+    to_do.splice(num, 1);
   }
 
-  mvCpTask(num:number){
+  mvCpTask(num: number) {
     to_do.push(cp_to_do[num]);
-    cp_to_do.splice(num,1);
+    cp_to_do.splice(num, 1);
   }
 
-  //changeShowAllTask(){}
+  changeShowAllTask() {
+    console.log("All task");
+    this.listStatus = 1;
+  }
 
-
-
+  changeShowCpTask() {
+    console.log("Cp task");
+    this.listStatus = 2;
+  }
 
 }

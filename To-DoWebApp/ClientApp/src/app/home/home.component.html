@@ -7,48 +7,47 @@
   <hr width="1100">
 
   <!--一覧表示-->
+  <form>
+  <div id="selector">
+    <input type="radio" id="allTaskButton" class="allTaskButton" name="allTaskButton">
+    <label for="allTaskButton" class="allTaskButton">
+      <button class="allTask" border (click)="changeShowAllTask()">タスク一覧</button>
+    </label>
+    
+    <input type="radio" id="cpTaskButton" class="cpTaskButton" name="cpTaskButton">
+    <label for="cpTaskButton" class="cpTaskButton">
+      <button class="cpTask" border (click)="changeShowCpTask()">完了タスク</button>
+    </label>
+    
+  </div>
   
-  <!--
-  <button class="allTask" border clicked >タスク一覧</button> <button class="cpTask" border>完了タスク</button>
+  <div *ngIf="listStatus == 1 ">
+    <h1>タスク一覧表</h1>
+    <div *ngFor="let to_do_list of to_do_list; index as i">
+      <table>
+        <tr>
+          <td>
+            <div class="text">{{to_do_list.to}}<div class="listButton"> <button (click)="mvTask(i)">完了</button><button (click)="deleteTask(i)">削除</button></div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</form>
 
-  <ng-container *ngIf="taskStatus = 1 ; else showList">
-    <div *ngFor="let to_do of to_do; index as i">
-    <table>
-      <tr>
-        <td><div class="text">{{to_do.to}}<div class="listButton"> <button (click)="mvTask(i)">完了</button><button (click)="deleteTask(i)">削除</button></div></div></td>
-      </tr>
-    </table>
-  </div>
-</ng-container>
- 
-<ng-template #showList>
-  <div *ngFor="let cp_to_do of cp_to_do; index as i">
-    <table>
-      <tr>
-        <td><div class="text">{{cp_to_do.to}}<div class="listButton" ><button (click)="mvCpTask(i)">未完</button><button (click)="deleteCpTask(i)">削除</button></div></div></td>
-      </tr>
-    </table>
-  </div>
-</ng-template>-->
-   
-  <h1 class="title">　タスク一覧　</h1>
-
-  <div *ngFor="let to_do of to_do; index as i">
-    <table>
-      <tr>
-        <td><div class="text">{{to_do.to}}<div class="listButton"> <button (click)="mvTask(i)">完了</button><button (click)="deleteTask(i)">削除</button></div></div></td>
-      </tr>
-    </table>
-  </div>
-  <br>
-  <h1 class="title">　完了タスク　</h1>
-  <div *ngFor="let cp_to_do of cp_to_do; index as i">
-    <table>
-      <tr>
-        <td><div class="text">{{cp_to_do.to}}<div class="listButton" ><button (click)="mvCpTask(i)">未完</button><button (click)="deleteCpTask(i)">削除</button></div></div></td>
-      </tr>
-    </table>
+  <div *ngIf="listStatus == 2 ">
+    <h1>完了タスク</h1>
+    <div *ngFor="let cp_to_do_list of cp_to_do_list; index as i">
+      <table>
+        <tr>
+          <td>
+            <div class="text">{{cp_to_do_list.to}}<div class="listButton"><button (click)="mvCpTask(i)">未完</button><button (click)="deleteCpTask(i)">削除</button></div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
   </div>
 
-  
 </body>
