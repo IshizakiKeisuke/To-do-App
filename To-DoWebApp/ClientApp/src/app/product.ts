@@ -1,6 +1,6 @@
 
 
-export interface To_do_list {
+export interface ToDoList {
   to; string;
 }
 
