@@ -21,8 +21,11 @@ namespace To_DoWebApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<TodoItemContext>(opt =>@
-               opt.UseInMemoryDatabase("TodoList")); 
+            services.AddDbContext<TodoItemContext>(opt =>
+               opt.UseInMemoryDatabase(Configuration["DatabaseName"])); //DB‚Í‚Q‚Â‹¤‘¶‚Å‚«‚È‚¢AddDbContext‚©‚ÂUseInMemoryDatabaseˆê‚¾‚Á‚½‚ç¨DI‚Ì‚¨˜b
+
+            services.AddDbContext<TodoItemContext>(opt =>
+               opt.UseCosmos(Configuration.GetConnectionString("CsomosDb"), Configuration["DatabaseName"]));
             services.AddControllersWithViews();
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
