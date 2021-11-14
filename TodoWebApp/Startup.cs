@@ -5,9 +5,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
-using To_DoWebApp.Models;
+using TodoWebApp.Models;
 
-namespace To_DoWebApp
+namespace TodoWebApp
 {
     public class Startup
     {
@@ -21,8 +21,8 @@ namespace To_DoWebApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<TodoItemContext>(opt =>Å@
-               opt.UseInMemoryDatabase("TodoList")); 
+            services.AddDbContext<TodoItemContext>(opt => 
+                opt.UseInMemoryDatabase("TodoList")); 
             services.AddControllersWithViews();
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
