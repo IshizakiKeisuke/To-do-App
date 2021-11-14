@@ -15,8 +15,13 @@
         "createDefaultProgram": true
       },
       "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
         "plugin:@angular-eslint/recommended",
         "plugin:@angular-eslint/template/process-inline-templates",
+        // "prettier"は必ず最後に記載する (https://github.com/prettier/eslint-config-prettier)
         "prettier"
       ],
       "rules": {
