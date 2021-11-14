@@ -13,14 +13,14 @@
     <label for="allTaskButton" class="allTaskButton">
       <button class="allTask" border (click)="changeShowAllTask()">タスク一覧</button>
     </label>
-    
+
     <input type="radio" id="cpTaskButton" class="cpTaskButton" name="cpTaskButton">
     <label for="cpTaskButton" class="cpTaskButton">
       <button class="cpTask" border (click)="changeShowCpTask()">完了タスク</button>
     </label>
-    
+
   </div>
-  
+
   <div *ngIf="listStatus == TaskStatus.InProgress ">
     <h1>タスク一覧表</h1>
     <div *ngFor="let to_do_list of to_do_list; index as i">
