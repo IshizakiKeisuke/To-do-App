@@ -229,3 +229,8 @@ _Pvt_Extensions
 
 # FAKE - F# Make
 .fake/
+
+
+# .js file don't added (costom by actor)
+*.js
+*.js.map
