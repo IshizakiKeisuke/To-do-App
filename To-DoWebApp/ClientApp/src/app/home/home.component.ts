@@ -15,7 +15,7 @@ import { TodoItemService } from './todoitem.service';
 export class HomeComponent implements OnInit {
   to_do_list = [] ;
 
-  isView = "AllTask";
+  TodoViewMode = "AllTask";
 
   constructor(private todoItemService: TodoItemService) { }
 
@@ -49,10 +49,10 @@ export class HomeComponent implements OnInit {
   }
 
   changeShowAllTask() {
-    this.isView = "AllTask";
+    this.TodoViewMode = "AllTask";
   }
 
   changeShowCpTask() {
-    this.isView="CpTask";
+    this.TodoViewMode ="CpTask";
   }
 }
