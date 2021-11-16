@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using To_DoWebApp.Models;
+using ToDoWebApp.Models;
 
 namespace To_DoWebApp
 {
@@ -16,16 +17,14 @@ namespace To_DoWebApp
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
+        public IConfiguration Configuration { get; set; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<TodoItemContext>(opt =>
-               opt.UseInMemoryDatabase(Configuration["DatabaseName"])); //DBÇÕÇQÇ¬ã§ë∂Ç≈Ç´Ç»Ç¢AddDbContextÇ©Ç¬UseInMemoryDatabaseàÍèèÇæÇ¡ÇΩÇÁÅ®DIÇÃÇ®òb
+               opt.UseCosmos(Configuration.GetConnectionString("CosmosDb"), Configuration["DatabaseName"]));
 
-            services.AddDbContext<TodoItemContext>(opt =>
-               opt.UseCosmos(Configuration.GetConnectionString("CsomosDb"), Configuration["DatabaseName"]));
             services.AddControllersWithViews();
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
