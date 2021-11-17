@@ -12,13 +12,16 @@ export class TodoItemService {
 
   }
 
-  getTodoItems() {
+  getTodoItemList() {
     return this.http.get<TodoItem[]>("api/TodoItems");
   }
 
   addTodoItem(todoItem: AddTodoItemRequest){
     return this.http.post<TodoItem>("api/TodoItems",todoItem);
-    
+  }
+
+  changeTodoItem(todoItem:TodoItem){
+    return this.http.put<TodoItem>("api/TodoItems/" + todoItem.id, todoItem);
   }
 
 }

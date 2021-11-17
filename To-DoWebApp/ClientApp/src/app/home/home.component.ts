@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
   }
 
   showTodoItems() {
-    this.todoItemService.getTodoItems()
+    this.todoItemService.getTodoItemList()
     .subscribe((to_do_items: TodoItem[]) => {
       this.to_do_list = to_do_items;
     });
@@ -50,16 +50,18 @@ export class HomeComponent implements OnInit {
     this.to_do_list.splice(num, 1);
   }
 
-  changeIsCompleteStatus(index: number, isComplete: boolean) {
-    this.to_do_list[index].isComplete = isComplete;
+  changeIsCompleteStatus(todoItem:TodoItem, switchIsComplete: boolean) {
+    todoItem.isComplete = switchIsComplete;
+    this.todoItemService.changeTodoItem(todoItem).subscribe();
+    this.showTodoItems();
   }
 
-  changeShowAllTask() {
+  changeShowAllTask(){
     this.todoViewMode = "AllTask";
-  }
+  };
 
-  changeShowCpTask() {
-    this.todoViewMode ="CpTask";
+  changeShowCpTask(){
+    this.todoViewMode = "CpTask";
   }
 }
 
