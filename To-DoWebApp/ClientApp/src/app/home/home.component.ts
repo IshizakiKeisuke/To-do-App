@@ -3,7 +3,7 @@ import { Component, Injectable, OnInit, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 import { TodoItem } from './todoitem.model';
-import { TodoItemService } from './todoitem.service';
+import { AddTodoItemRequest, TodoItemService } from './todoitem.service';
 
 
 @Component({
@@ -30,13 +30,19 @@ export class HomeComponent implements OnInit {
     });
   }
 
+
   input_task = new FormGroup({
     name: new FormControl(''),
   })
 
   inputItem(): void {
     if (this.input_task.value.name.length > 0 && this.input_task.value.name.length <= 500) {
-      this.to_do_list.push({ name: this.input_task.value.name ,isComplete :false});
+      this.todoItemService.addTodoItem({
+        name: this.input_task.value.name,
+        isComplete: false
+      }).subscribe();
+
+      this.showTodoItems();
     }
   }
 
@@ -56,3 +62,5 @@ export class HomeComponent implements OnInit {
     this.todoViewMode ="CpTask";
   }
 }
+
+
