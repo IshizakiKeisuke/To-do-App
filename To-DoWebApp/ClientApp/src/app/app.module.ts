@@ -5,12 +5,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
+import { TodoItemService } from './home/todoitem.service';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
+    AppComponent,
     AppComponent,
     NavMenuComponent,
     HomeComponent,
@@ -24,7 +26,9 @@ import { HomeComponent } from './home/home.component';
       { path: '', component: HomeComponent, pathMatch: 'full' },
     ])
   ],
-  providers: [],
+  providers: [
+    TodoItemService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
