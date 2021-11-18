@@ -23,7 +23,7 @@
 
     <div *ngIf="todoViewMode =='AllTask'">
       <h1>タスク一覧表</h1>
-      <div *ngFor="let to_do of to_do_list; index as i">
+      <div *ngFor="let to_do of to_do_list">
         <div *ngIf="to_do.isComplete == false">
           <table>
             <tr>
@@ -42,7 +42,7 @@
 
   <div *ngIf="todoViewMode =='CpTask'">
     <h1>完了タスク</h1>
-    <div *ngFor="let to_do of to_do_list; index as i">
+    <div *ngFor="let to_do of to_do_list">
       <div *ngIf="to_do.isComplete">
         <table>
           <tr>

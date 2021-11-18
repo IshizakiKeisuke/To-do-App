@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { TodoItem } from './todoitem.model';
-import { logging } from 'selenium-webdriver';
 
 export type AddTodoItemRequest = Omit<TodoItem, 'id'>;
 
@@ -25,7 +24,7 @@ export class TodoItemService {
     return this.http.put<TodoItem>("api/TodoItems/" + todoItem.id, todoItem);
   }
 
-  deleteTodoItrem(todoItem:TodoItem){
+  deleteTodoItem(todoItem:TodoItem){
     return this.http.delete<TodoItem>("api/TodoItems/" + todoItem.id);
   }
 

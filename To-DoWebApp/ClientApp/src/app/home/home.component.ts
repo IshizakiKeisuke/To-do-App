@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Injectable, OnInit, Output } from '@angular/core';
-import { FormGroup, SelectMultipleControlValueAccessor } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 import { TodoItem } from './todoitem.model';
 import { AddTodoItemRequest, TodoItemService } from './todoitem.service';
@@ -37,17 +37,19 @@ export class HomeComponent implements OnInit {
 
   inputItem(): void {
     if (this.input_task.value.name.length > 0 && this.input_task.value.name.length <= 500) {
-      this.todoItemService.addTodoItem({
-        name: this.input_task.value.name,
-        isComplete: false
-      }).subscribe(
-        () =>this.showTodoItemList()
-      );
+      this.todoItemService
+        .addTodoItem({
+          name: this.input_task.value.name,
+          isComplete: false
+        })
+        .subscribe(
+          () => this.showTodoItemList()
+        );
     }
   }
 
   deleteTask(todoItem:TodoItem) {
-    this.todoItemService.deleteTodoItrem(todoItem).subscribe(todoItem =>this.showTodoItemList());
+    this.todoItemService.deleteTodoItem(todoItem).subscribe(() => this.showTodoItemList());
   }
 
   changeIsCompleteStatus(todoItem:TodoItem, switchIsComplete: boolean) {
