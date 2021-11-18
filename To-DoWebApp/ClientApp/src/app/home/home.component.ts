@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Injectable, OnInit, Output } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, SelectMultipleControlValueAccessor } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 import { TodoItem } from './todoitem.model';
 import { AddTodoItemRequest, TodoItemService } from './todoitem.service';
@@ -20,10 +20,10 @@ export class HomeComponent implements OnInit {
   constructor(private todoItemService: TodoItemService) { }
 
   ngOnInit(): void {
-    this.showTodoItems();
+    this.showTodoItemList();
   }
 
-  showTodoItems() {
+  showTodoItemList() {
     this.todoItemService.getTodoItemList()
     .subscribe((to_do_items: TodoItem[]) => {
       this.to_do_list = to_do_items;
@@ -40,20 +40,21 @@ export class HomeComponent implements OnInit {
       this.todoItemService.addTodoItem({
         name: this.input_task.value.name,
         isComplete: false
-      }).subscribe();
-
-      this.showTodoItems();
+      }).subscribe(
+        () =>this.showTodoItemList()
+      );
     }
   }
 
-  deleteTask(num: number) {
-    this.to_do_list.splice(num, 1);
+  deleteTask(todoItem:TodoItem) {
+    this.todoItemService.deleteTodoItrem(todoItem).subscribe(todoItem =>this.showTodoItemList());
   }
 
   changeIsCompleteStatus(todoItem:TodoItem, switchIsComplete: boolean) {
     todoItem.isComplete = switchIsComplete;
-    this.todoItemService.changeTodoItem(todoItem).subscribe();
-    this.showTodoItems();
+    this.todoItemService.changeTodoItem(todoItem).subscribe(
+      () =>this.showTodoItemList()
+    );
   }
 
   changeShowAllTask(){

@@ -29,7 +29,7 @@
             <tr>
               <td>
                 <div class="text">{{to_do.name}}<div class="listButton"> <button (click)="changeIsCompleteStatus(to_do, true)">完了</button>
-                  <button (click)="deleteTask(i)">削除</button></div>
+                  <button (click)="deleteTask(to_do)">削除</button></div>
                 </div>
               </td>
             </tr>
@@ -47,7 +47,7 @@
         <table>
           <tr>
             <td>
-              <div class="text">{{to_do.name}}<div class="listButton"><button (click)="changeIsCompleteStatus(to_do, false)">未完</button><button (click)="deleteTask(i)">削除</button></div>
+              <div class="text">{{to_do.name}}<div class="listButton"><button (click)="changeIsCompleteStatus(to_do, false)">未完</button><button (click)="deleteTask(to_do)">削除</button></div>
               </div>
             </td>
           </tr>
