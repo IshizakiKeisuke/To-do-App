@@ -5,10 +5,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
-using To_DoWebApp.Models;
-using ToDoWebApp.Models;
+using TodoWebApp.Models;
 
-namespace To_DoWebApp
+namespace TodoWebApp
 {
     public class Startup
     {

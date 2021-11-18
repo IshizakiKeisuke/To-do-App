@@ -8,7 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ToDoWebApp.Models;
 
-namespace To_DoWebApp
+namespace TodoWebApp
 {
     public class Program
     {
