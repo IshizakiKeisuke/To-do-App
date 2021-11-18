@@ -4,9 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ToDoWebApp.Models;
+using TodoWebApp.Models;
 
-namespace To_DoWebApp.Models
+namespace TodoWebApp.Models
 {
     public class TodoItemContext : DbContext
     {
