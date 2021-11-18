@@ -1,13 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule} from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
+import {MsalGuard, MsalRedirectComponent} from "@azure/msal-angular";
+import {AppMsalModule} from "./app.auth.module";
 
 @NgModule({
   declarations: [
@@ -20,13 +21,14 @@ import { HomeComponent } from './home/home.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule ,
-    RouterModule.forRoot([
-        { path: '', component: HomeComponent, pathMatch: 'full' },
-      ],
-      { relativeLinkResolution: 'legacy' }
+    AppMsalModule,
+    RouterModule.forRoot(
+      [
+        { path: '', component: HomeComponent, pathMatch: 'full', canActivate: [MsalGuard] },
+      ]
     )
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent, MsalRedirectComponent]
 })
 export class AppModule { }
