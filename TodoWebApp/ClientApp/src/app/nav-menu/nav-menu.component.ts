@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, Inject} from '@angular/core';
+import {MSAL_GUARD_CONFIG, MsalBroadcastService, MsalGuardConfiguration, MsalService} from "@azure/msal-angular";
 
 @Component({
   selector: 'app-nav-menu',
@@ -7,6 +8,15 @@ import { Component } from '@angular/core';
 })
 export class NavMenuComponent {
   isExpanded = false;
+
+  constructor(private authService: MsalService) {
+  }
+
+  logout() {
+    this.authService.logoutRedirect({
+      postLogoutRedirectUri: 'http://localhost:4200'
+    });
+  }
 
   collapse() {
     this.isExpanded = false;
