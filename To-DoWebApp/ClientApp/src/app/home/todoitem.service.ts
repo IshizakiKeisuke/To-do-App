@@ -24,4 +24,8 @@ export class TodoItemService {
     return this.http.put<TodoItem>("api/TodoItems/" + todoItem.id, todoItem);
   }
 
+  deleteTodoItem(todoItem:TodoItem){
+    return this.http.delete<TodoItem>("api/TodoItems/" + todoItem.id);
+  }
+
 }

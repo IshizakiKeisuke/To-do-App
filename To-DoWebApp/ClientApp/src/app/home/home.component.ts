@@ -20,10 +20,10 @@ export class HomeComponent implements OnInit {
   constructor(private todoItemService: TodoItemService) { }
 
   ngOnInit(): void {
-    this.showTodoItems();
+    this.showTodoItemList();
   }
 
-  showTodoItems() {
+  showTodoItemList() {
     this.todoItemService.getTodoItemList()
     .subscribe((to_do_items: TodoItem[]) => {
       this.to_do_list = to_do_items;
@@ -37,23 +37,26 @@ export class HomeComponent implements OnInit {
 
   inputItem(): void {
     if (this.input_task.value.name.length > 0 && this.input_task.value.name.length <= 500) {
-      this.todoItemService.addTodoItem({
-        name: this.input_task.value.name,
-        isComplete: false
-      }).subscribe();
-
-      this.showTodoItems();
+      this.todoItemService
+        .addTodoItem({
+          name: this.input_task.value.name,
+          isComplete: false
+        })
+        .subscribe(
+          () => this.showTodoItemList()
+        );
     }
   }
 
-  deleteTask(num: number) {
-    this.to_do_list.splice(num, 1);
+  deleteTask(todoItem:TodoItem) {
+    this.todoItemService.deleteTodoItem(todoItem).subscribe(() => this.showTodoItemList());
   }
 
   changeIsCompleteStatus(todoItem:TodoItem, switchIsComplete: boolean) {
     todoItem.isComplete = switchIsComplete;
-    this.todoItemService.changeTodoItem(todoItem).subscribe();
-    this.showTodoItems();
+    this.todoItemService.changeTodoItem(todoItem).subscribe(
+      () =>this.showTodoItemList()
+    );
   }
 
   changeShowAllTask(){
