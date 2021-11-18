@@ -23,8 +23,10 @@ import { HomeComponent } from './home/home.component';
     FormsModule,
     ReactiveFormsModule ,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
-    ])
+        { path: '', component: HomeComponent, pathMatch: 'full' },
+      ],
+      { relativeLinkResolution: 'legacy' }
+    )
   ],
   providers: [
     TodoItemService
