@@ -16,13 +16,14 @@ namespace TodoWebApp
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
+        public IConfiguration Configuration { get; set; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<TodoItemContext>(opt => 
-                opt.UseInMemoryDatabase("TodoList")); 
+            services.AddDbContext<TodoItemContext>(opt =>
+               opt.UseCosmos(Configuration.GetConnectionString("CosmosDb"), Configuration["DatabaseName"]));
+
             services.AddControllersWithViews();
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>

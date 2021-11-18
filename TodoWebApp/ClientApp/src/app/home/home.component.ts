@@ -1,7 +1,9 @@
-import { Component, Output } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, Injectable, OnInit, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormControl } from '@angular/forms';
-import { cp_to_do, to_do } from '../product';
+import { TodoItem } from './todoitem.model';
+import { AddTodoItemRequest, TodoItemService } from './todoitem.service';
 
 
 @Component({
@@ -9,55 +11,61 @@ import { cp_to_do, to_do } from '../product';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
+                                                                                                                  
+export class HomeComponent implements OnInit {
+  to_do_list = [] ;
 
-export class HomeComponent {
-  to_do_list= to_do;
-  cp_to_do_list= cp_to_do;
+  todoViewMode = "AllTask";
 
-  id_count = to_do.length;
+  constructor(private todoItemService: TodoItemService) { }
 
-  TaskStatus = {
-    Complete: 'Complete',
-    InProgress: 'InProgress',
+  ngOnInit(): void {
+    this.showTodoItemList();
   }
-    listStatus = "false";
+
+  showTodoItemList() {
+    this.todoItemService.getTodoItemList()
+    .subscribe((to_do_items: TodoItem[]) => {
+      this.to_do_list = to_do_items;
+    });
+  }
 
 
   input_task = new FormGroup({
-    to: new FormControl(''),
+    name: new FormControl(''),
   })
 
   inputItem(): void {
-    if (this.input_task.value.to.length > 0 && this.input_task.value.to.length <= 500) {
-      this.to_do_list.push({ to: this.input_task.value.to });
+    if (this.input_task.value.name.length > 0 && this.input_task.value.name.length <= 500) {
+      this.todoItemService
+        .addTodoItem({
+          name: this.input_task.value.name,
+          isComplete: false
+        })
+        .subscribe(
+          () => this.showTodoItemList()
+        );
     }
   }
 
-  deleteTask(num: number) {
-    to_do.splice(num, 1);
+  deleteTask(todoItem:TodoItem) {
+    this.todoItemService.deleteTodoItem(todoItem).subscribe(() => this.showTodoItemList());
   }
 
-  deleteCpTask(num: number) {
-    cp_to_do.splice(num, 1);
+  changeIsCompleteStatus(todoItem:TodoItem, switchIsComplete: boolean) {
+    todoItem.isComplete = switchIsComplete;
+    this.todoItemService.changeTodoItem(todoItem).subscribe(
+      () =>this.showTodoItemList()
+    );
   }
 
-  mvTask(num: number) {
-    cp_to_do.push(to_do[num]);
-    to_do.splice(num, 1);
-  }
+  changeShowAllTask(){
+    this.todoViewMode = "AllTask";
+  };
 
-  mvCpTask(num: number) {
-    to_do.push(cp_to_do[num]);
-    cp_to_do.splice(num, 1);
-  }
-
-  changeShowAllTask() {
-    console.log("All task");
-    this.listStatus ="InProgress";
-  }
-
-  changeShowCpTask() {
-    console.log("Cp task");
-    this.listStatus = "Complete";
+  changeShowCpTask(){
+    this.todoViewMode = "CpTask";
   }
 }
+
+

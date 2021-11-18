@@ -45,7 +45,7 @@ namespace TodoWebApp.Controllers
         // PUT: api/TodoItems/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutTodoItem(long id, TodoItem todoItem)
+        public async Task<IActionResult> PutTodoItem(string id, TodoItem todoItem)
         {
             if (id != todoItem.Id)
             {
@@ -86,9 +86,9 @@ namespace TodoWebApp.Controllers
 
         // DELETE: api/TodoItems/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteTodoItem(long id)
+        public async Task<IActionResult> DeleteTodoItem(string id)
         {
-            var todoItem = await _context.TodoItems.FindAsync(id);
+            var todoItem = await _context.TodoItems.FindAsync(todoItem => todoItem.Id == id);
             if (todoItem == null)
             {
                 return NotFound();
@@ -100,7 +100,7 @@ namespace TodoWebApp.Controllers
             return NoContent();
         }
 
-        private bool TodoItemExists(long id)
+        private bool TodoItemExists(string id)
         {
             return _context.TodoItems.Any(e => e.Id == id);
         }
