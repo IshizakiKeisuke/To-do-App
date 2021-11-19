@@ -235,4 +235,4 @@ _Pvt_Extensions
 *.js
 *.js.map
 
-/appsettings.json
+**/appsettings.json
