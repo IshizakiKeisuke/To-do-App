@@ -9,20 +9,18 @@
   <!--一覧表示-->
   <form>
     <div id="selector">
-      <input type="radio" id="allTaskButton" class="allTaskButton" name="allTaskButton">
-      <label for="allTaskButton" class="allTaskButton">
-        <button class="allTask" border (click)="changeShowAllTask()">タスク一覧</button>
+      <input type="radio" id="allTaskButton" class="allTaskButton" name="selectButton" checked>
+      <label for="allTaskButton" class="TaskButton" (click)="changeShowAllTask()">タスク一覧
       </label>
 
-      <input type="radio" id="cpTaskButton" class="cpTaskButton" name="cpTaskButton">
-      <label for="cpTaskButton" class="cpTaskButton">
-        <button class="cpTask" border (click)="changeShowCpTask()">完了タスク</button>
+      <input type="radio" id="cpTaskButton" class="cpTaskButton" name="selectButton">
+      <label for="cpTaskButton" class="TaskButton" (click)="changeShowCpTask()">完了タスク
       </label>
 
     </div>
-
+  </form>
+  <br>
     <div *ngIf="todoViewMode =='AllTask'">
-      <h1>タスク一覧表</h1>
       <div *ngFor="let to_do of to_do_list">
         <div *ngIf="to_do.isComplete == false">
           <table>
@@ -37,11 +35,10 @@
         </div>
       </div>
     </div>
-  </form>
+  
   
 
   <div *ngIf="todoViewMode =='CpTask'">
-    <h1>完了タスク</h1>
     <div *ngFor="let to_do of to_do_list">
       <div *ngIf="to_do.isComplete">
         <table>

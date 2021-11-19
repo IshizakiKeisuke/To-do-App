@@ -234,3 +234,5 @@ _Pvt_Extensions
 # .js file don't added (costom by actor)
 *.js
 *.js.map
+
+**/appsettings.json

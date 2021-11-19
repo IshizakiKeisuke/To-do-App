@@ -1,23 +1,31 @@
-html,
-body{ 
-   background-color: #F2E0CF;
-   height:100%;
- }
-
-
-button {
+button{
   color: aliceblue;
+  font-weight: 500;
   background-color: #AF6060;
   margin: 10px;
   border: solid 3px #ffffff;
 }
 
-button:hover {
-  background-color: darkblue;
+label.TaskButton{
+  font-size: 200%;
+}
+
+label{
+  color: dimgray ;
+  font-weight: 500;
+  background-color: #F2E0CF;
+  margin: 5px;
+  padding: 10px;
+  border: solid 6px #ffffff;
 }
 
 #selector input{
   display: none;
+}
+
+#selector input[type="radio"]:checked + label {
+  color: aliceblue;
+  background-color: #AF6060
 }
 
 table {
