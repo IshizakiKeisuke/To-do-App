@@ -1,5 +1,6 @@
 button{
   color: aliceblue;
+  font-weight: 500;
   background-color: #AF6060;
   margin: 10px;
   border: solid 3px #ffffff;
@@ -10,8 +11,9 @@ label.TaskButton{
 }
 
 label{
-  color: aliceblue;
-  background-color: #AF6060;
+  color: dimgray ;
+  font-weight: 500;
+  background-color: #F2E0CF;
   margin: 5px;
   padding: 10px;
   border: solid 6px #ffffff;
@@ -22,7 +24,8 @@ label{
 }
 
 #selector input[type="radio"]:checked + label {
-  background-color: darkblue
+  color: aliceblue;
+  background-color: #AF6060
 }
 
 table {
