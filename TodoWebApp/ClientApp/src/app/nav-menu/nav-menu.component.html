@@ -4,15 +4,13 @@
   >
     <div class="container">
       <a class="navbar-brand" [routerLink]="['/']">To-Do タスク</a>
-      <button class="navbar-toggler"
-              type="button"
-              data-toggle="collapse"
-              data-target=".navbar-collapse"
-              aria-label="Toggle navigation"
-              [attr.aria-expanded]="isExpanded"
-              (click)="toggle()">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+      
+      <div *ngIf="!loginStatus">
+        <a class="navbar-brand" (click)="login()">Login</a>
+      </div>
+      <div *ngIf="loginStatus">
+        <a class="navbar-brand" (click)="logout()">Logout</a>
+      </div>
     </div>
   </nav>
 </header>

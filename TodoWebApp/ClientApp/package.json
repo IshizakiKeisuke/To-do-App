@@ -33,7 +33,9 @@
     "ts-node": "~8.4.1",
     "tslint": "~5.20.0",
     "yarn": "^1.22.15",
-    "zone.js": "0.9.1"
+    "zone.js": "0.9.1",
+    "@azure/msal-angular": "^2.0.2",
+    "@azure/msal-browser": "^2.16.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.803.29",
