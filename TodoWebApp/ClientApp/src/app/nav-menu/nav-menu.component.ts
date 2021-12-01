@@ -11,7 +11,7 @@ import { filter, takeUntil } from 'rxjs/operators';
 })
 export class NavMenuComponent {
   isExpanded = false;
-  loginStatus = false;
+  loginDisplay = false;
   isIframe = false;
   private readonly _destroying$ = new Subject<void>();
 
@@ -42,12 +42,12 @@ export class NavMenuComponent {
         takeUntil(this._destroying$)
       )
       .subscribe(() => {
-        this.setLoginStatus();
+        this.setLoginDisplay();
       });
   }
 
-  setLoginStatus() {
-    this.loginStatus = this.authService.instance.getAllAccounts().length > 0;
+  setLoginDisplay() {
+    this.loginDisplay = this.authService.instance.getAllAccounts().length > 0;
   }
 
   /*login() {
@@ -58,10 +58,10 @@ export class NavMenuComponent {
     this.loginStatus = false;
   }*/
 
-  login(userFlowRequest?: RedirectRequest | PopupRequest) {
+  login(userFlowRequest?: RedirectRequest | PopupRequest) { //引数が使用される理由が分からないので一旦放置、動作が確認できたら引数を削除してテストしてみること
       if (this.msalGuardConfig.authRequest) {
-        this.authService.loginRedirect({ ...this.msalGuardConfig.authRequest, ...userFlowRequest } as RedirectRequest);
-      } else {
+        this.authService.loginRedirect({ ...this.msalGuardConfig.authRequest, ...userFlowRequest } as RedirectRequest); //引数が二つではなく、RedirectRequest１つ ...aでaをコピーしている。
+      } else {    //これいらない(authRequestをapp.module.tsで定義してるから)
         this.authService.loginRedirect(userFlowRequest);
       }
   }
@@ -70,7 +70,7 @@ export class NavMenuComponent {
     this.authService.logout();
   }
 
-  ngOnDestroy(): void {
+  ngOnDestroy(): void { //ライブラリ使用がRxJS
     this._destroying$.next(undefined);
     this._destroying$.complete();
   }

@@ -11,6 +11,7 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { MsalGuardConfiguration, MsalInterceptorConfiguration, MsalRedirectComponent, MSAL_GUARD_CONFIG, MSAL_INSTANCE, MSAL_INTERCEPTOR_CONFIG } from '@azure/msal-angular';
 import { InteractionType, IPublicClientApplication, PublicClientApplication } from '@azure/msal-browser';
+import { loginRequest, msalConfig, protectedResources } from './auth-config';
 
 export function MSALInstanceFactory(): IPublicClientApplication {
   return new PublicClientApplication(msalConfig);
@@ -51,7 +52,7 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
     ])
   ],
   providers: [
-    TodoItemService,
+    TodoItemService,     //Di
     {
       provide: MSAL_INSTANCE,
       useFactory:MSALInstanceFactory
@@ -64,8 +65,8 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
       provide: MSAL_INTERCEPTOR_CONFIG,
       useFactory: MSALInterceptorConfigFactory
     }
-
   ],
+  
   bootstrap: [
     AppComponent, MsalRedirectComponent
   ],

@@ -3,12 +3,12 @@
     class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3"
   >
     <div class="container">
-      <a class="navbar-brand" [routerLink]="['/']">To-Do タスク</a>
+      <a class="navbar-brand">To-Do タスク</a>
       
-      <div *ngIf="!loginStatus">
+      <div *ngIf="!loginDisplay">
         <a class="navbar-brand" (click)="login()">Login</a>
       </div>
-      <div *ngIf="loginStatus">
+      <div *ngIf="loginDisplay">
         <a class="navbar-brand" (click)="logout()">Logout</a>
       </div>
     </div>
