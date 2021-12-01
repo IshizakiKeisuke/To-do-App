@@ -9,7 +9,7 @@ import { TodoItemService } from './home/todoitem.service';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
-import { MsalGuardConfiguration, MsalInterceptorConfiguration, MsalRedirectComponent, MSAL_GUARD_CONFIG, MSAL_INSTANCE, MSAL_INTERCEPTOR_CONFIG } from '@azure/msal-angular';
+import { MsalBroadcastService, MsalGuard, MsalGuardConfiguration, MsalInterceptorConfiguration, MsalRedirectComponent, MsalService, MSAL_GUARD_CONFIG, MSAL_INSTANCE, MSAL_INTERCEPTOR_CONFIG } from '@azure/msal-angular';
 import { InteractionType, IPublicClientApplication, PublicClientApplication } from '@azure/msal-browser';
 import { loginRequest, msalConfig, protectedResources } from './auth-config';
 
@@ -64,7 +64,10 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
     {
       provide: MSAL_INTERCEPTOR_CONFIG,
       useFactory: MSALInterceptorConfigFactory
-    }
+    },
+    MsalService,
+    MsalGuard,
+    MsalBroadcastService,
   ],
   
   bootstrap: [

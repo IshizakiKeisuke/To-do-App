@@ -1,4 +1,4 @@
-﻿import { BrowserCacheLocation, Configuration, LogLevel } from "@azure/msal-browser";
+import { BrowserCacheLocation, Configuration, LogLevel } from "@azure/msal-browser";
 
 /*msalConfig /終了
 loginRequest
@@ -46,7 +46,7 @@ export const msalConfig: Configuration = {
 
 export const protectedResources = {
   todoListApi: {
-    endpoint: "https://localhost:44319/api/todolist", //https://localhost:44351がいらない可能性・無い場合は相対評価になる。
+    endpoint: "https://localhost:44319/api/TodoItems", //https://localhost:44351がいらない可能性・無い場合は相対評価になる。
     scopes: [],
   },
 }
