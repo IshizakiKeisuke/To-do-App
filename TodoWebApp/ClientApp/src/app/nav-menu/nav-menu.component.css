@@ -5,6 +5,14 @@ a.navbar-brand {
   color: aliceblue;
 }
 
+button.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+  color: aliceblue;
+  background:none;
+}
+
 nav {
   background-color: #AF6060;
 }
