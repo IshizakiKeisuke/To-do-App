@@ -8,15 +8,11 @@ const isIE = window.navigator.userAgent.indexOf("MSIE ") > -1 || window.navigato
 
 export const b2cPolicies = {
   names: {
-      signUpSignIn: "b2c_1_susi_v2",
-      editProfile: "b2c_1_edit_profile_v2"
+    signUpSignIn: "b2c_1_todo_signup_signin",
   },
   authorities: {
       signUpSignIn: {
-          authority: "https://ritskztodob2c.b2clogin.com/ritskztodob2c.onmicrosoft.com/b2c_1_susi_v2",
-      },
-      editProfile: {
-          authority: "https://ritskztodob2c.b2clogin.com/ritskztodob2c.onmicrosoft.com/b2c_1_edit_profile_v2"
+      authority: "https://ritskztodob2c.b2clogin.com/ritskztodob2c.onmicrosoft.com/b2c_1_todo_signup_signin",
       }
   },
   authorityDomain: "ritskztodob2c.b2clogin.com"
@@ -24,7 +20,7 @@ export const b2cPolicies = {
 
 export const msalConfig: Configuration = {
   auth: {
-      clientId: '67f22baf-40ae-457e-b9f6-760a03a7ac1b', // This is the ONLY mandatory field that you need to supply.
+      clientId: '0997df26-a9ca-4055-a6c7-c74d05866f78', // This is the ONLY mandatory field that you need to supply.
       authority: b2cPolicies.authorities.signUpSignIn.authority, // Defaults to "https://login.microsoftonline.com/common"
       knownAuthorities: [b2cPolicies.authorityDomain], // Mark your B2C tenant's domain as trusted.
       redirectUri: '/', // Points to window.location.origin. You must register this URI on Azure portal/App Registration.
