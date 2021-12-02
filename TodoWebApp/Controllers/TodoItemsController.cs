@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -25,7 +26,8 @@ namespace TodoWebApp.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TodoItem>>> GetTodoItems()
         {
-            return await _context.TodoItems.ToListAsync(); //DBの接続
+            string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            return await _context.TodoItems.Where(item => item.UserId == userId).ToListAsync(); //DBの接続
         }
 
         // GET: api/TodoItems/5
