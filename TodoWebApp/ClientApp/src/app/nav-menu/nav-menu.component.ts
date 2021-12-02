@@ -40,6 +40,7 @@ export class NavMenuComponent {
       .pipe(
         filter((status: InteractionStatus) => status === InteractionStatus.None),
         takeUntil(this._destroying$)
+               
       )
       .subscribe(() => {
         this.setLoginDisplay();
@@ -62,7 +63,7 @@ export class NavMenuComponent {
       if (this.msalGuardConfig.authRequest) {
         this.authService.loginRedirect({ ...this.msalGuardConfig.authRequest, ...userFlowRequest } as RedirectRequest); //引数が二つではなく、RedirectRequest１つ ...aでaをコピーしている。
       } else {    //これいらない(authRequestをapp.module.tsで定義してるから)
-        this.authService.loginRedirect(userFlowRequest);
+       // this.authService.loginRedirect(userFlowRequest);
       }
   }
 

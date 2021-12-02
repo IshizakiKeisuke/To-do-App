@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using TodoWebApp.Models;
 using TodoWebApp.Models;
 
 namespace TodoWebApp.Controllers
@@ -15,6 +15,7 @@ namespace TodoWebApp.Controllers
     [ApiController]
     public class TodoItemsController : ControllerBase
     {
+
         private readonly TodoItemContext _context;
 
         public TodoItemsController(TodoItemContext context)
@@ -23,7 +24,9 @@ namespace TodoWebApp.Controllers
         }
 
         // GET: api/TodoItems
+        
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<TodoItem>>> GetTodoItems()
         {
             string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
@@ -53,6 +56,8 @@ namespace TodoWebApp.Controllers
             {
                 return BadRequest();
             }
+
+            
 
             _context.Entry(todoItem).State = EntityState.Modified;
 

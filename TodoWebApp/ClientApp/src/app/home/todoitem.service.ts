@@ -13,19 +13,19 @@ export class TodoItemService {
   }
 
   getTodoItemList() {
-    return this.http.get<TodoItem[]>("api/TodoItems");
+    return this.http.get<TodoItem[]>("https://localhost:44319/api/TodoItems");
   }
 
   addTodoItem(todoItem: AddTodoItemRequest){
-    return this.http.post<TodoItem>("api/TodoItems",todoItem);
+    return this.http.post<TodoItem>("https://localhost:44319/api/TodoItems",todoItem);
   }
 
   changeTodoItem(todoItem:TodoItem){
-    return this.http.put<TodoItem>("api/TodoItems/" + todoItem.id, todoItem);
+    return this.http.put<TodoItem>("https://localhost:44319/api/TodoItems/" + todoItem.id, todoItem);
   }
 
   deleteTodoItem(todoItem:TodoItem){
-    return this.http.delete<TodoItem>("api/TodoItems/" + todoItem.id);
+    return this.http.delete<TodoItem>("https://localhost:44319/api/TodoItems/" + todoItem.id);
   }
 
 }

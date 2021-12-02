@@ -6,6 +6,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using TodoWebApp.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Identity.Web;
 
 namespace TodoWebApp
 {
@@ -23,6 +25,19 @@ namespace TodoWebApp
         {
             services.AddDbContext<TodoItemContext>(opt =>
                opt.UseCosmos(Configuration.GetConnectionString("CosmosDb"), Configuration["DatabaseName"]));
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                   .AddMicrosoftIdentityWebApi(options =>
+                   {
+                       Configuration.Bind("AzureAdB2C", options);
+                       
+                       options.TokenValidationParameters.NameClaimType = "name";
+
+                       
+                   },
+           options => { Configuration.Bind("AzureAdB2C", options); });
+
+            services.AddAuthorization();
 
             services.AddControllersWithViews();
             // In production, the Angular files will be served from this directory
@@ -45,6 +60,8 @@ namespace TodoWebApp
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            
+            
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
@@ -55,12 +72,18 @@ namespace TodoWebApp
 
             app.UseRouting();
 
+            app.UseAuthentication();
+            app.UseAuthorization();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller}/{action=Index}/{id?}");
             });
+
+            
+
 
             app.UseSpa(spa =>
             {
