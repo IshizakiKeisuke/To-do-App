@@ -12,6 +12,7 @@ using TodoWebApp.Models;
 namespace TodoWebApp.Controllers
 {
     [Route("api/[controller]")]
+
     [ApiController]
     public class TodoItemsController : ControllerBase
     {
@@ -30,7 +31,7 @@ namespace TodoWebApp.Controllers
         public async Task<ActionResult<IEnumerable<TodoItem>>> GetTodoItems()
         {
             string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            return await _context.TodoItems.Where(item => item.UserId == userId).ToListAsync(); //DBの接続
+            return await _context.TodoItems.Where(item => item.UserId == userId).ToListAsync(); //DBの接続(Whereは優秀)
         }
 
         // GET: api/TodoItems/5
@@ -57,7 +58,7 @@ namespace TodoWebApp.Controllers
                 return BadRequest();
             }
 
-            
+            todoItem.UserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value; //
 
             _context.Entry(todoItem).State = EntityState.Modified;
 
@@ -85,6 +86,8 @@ namespace TodoWebApp.Controllers
         [HttpPost]
         public async Task<ActionResult<TodoItem>> PostTodoItem(TodoItem todoItem)
         {
+            todoItem.UserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
             _context.TodoItems.Add(todoItem);
             await _context.SaveChangesAsync();
 
@@ -95,7 +98,9 @@ namespace TodoWebApp.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTodoItem(string id)
         {
-            var todoItem = await _context.TodoItems.SingleAsync(todoItem => todoItem.Id == id);
+            var todoItem = await _context.TodoItems.SingleAsync((todoItem) => todoItem.Id == id);
+
+
             if (todoItem == null)
             {
                 return NotFound();
