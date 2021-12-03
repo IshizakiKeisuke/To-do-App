@@ -98,7 +98,9 @@ namespace TodoWebApp.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTodoItem(string id)
         {
-            var todoItem = await _context.TodoItems.SingleAsync((todoItem) => todoItem.Id == id);
+            string userIdChecke = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            var todoItem = await _context.TodoItems.SingleAsync((todoItem) => todoItem.UserId == userIdChecke && todoItem.Id == id);
 
 
             if (todoItem == null)
