@@ -1,33 +1,38 @@
 <body>
-  <form method="post" [formGroup]="input_task" (ngSubmit)="inputItem()">
-    <input type="text" size="40" formControlName="name">
-    <button type="submit">追加</button>
-  </form>
+    <form method="post" [formGroup]="input_task" (ngSubmit)="inputItem()">
+      <input type="text" size="40" formControlName="name">
+      <button type="submit">追加</button>
+    </form>
 
-  <hr width="1100">
+    <hr width="1100">
 
-  <!--一覧表示-->
-  <form>
-    <div id="selector">
-      <input type="radio" id="allTaskButton" class="allTaskButton" name="selectButton" checked>
-      <label for="allTaskButton" class="TaskButton" (click)="changeShowAllTask()">タスク一覧
-      </label>
+    <!--一覧表示-->
+    <form>
+      <div id="selector">
+        <input type="radio" id="allTaskButton" class="allTaskButton" name="selectButton" checked>
+        <label for="allTaskButton" class="TaskButton" (click)="changeShowAllTask()">
+          タスク一覧
+        </label>
 
-      <input type="radio" id="cpTaskButton" class="cpTaskButton" name="selectButton">
-      <label for="cpTaskButton" class="TaskButton" (click)="changeShowCpTask()">完了タスク
-      </label>
+        <input type="radio" id="cpTaskButton" class="cpTaskButton" name="selectButton">
+        <label for="cpTaskButton" class="TaskButton" (click)="changeShowCpTask()">
+          完了タスク
+        </label>
 
-    </div>
-  </form>
-  <br>
+      </div>
+    </form>
+    <br>
     <div *ngIf="todoViewMode =='AllTask'">
       <div *ngFor="let to_do of to_do_list">
         <div *ngIf="to_do.isComplete == false">
           <table>
             <tr>
               <td>
-                <div class="text">{{to_do.name}}<div class="listButton"> <button (click)="changeIsCompleteStatus(to_do, true)">完了</button>
-                  <button (click)="deleteTask(to_do)">削除</button></div>
+                <div class="text">
+                  {{to_do.name}}<div class="listButton">
+                    <button (click)="changeIsCompleteStatus(to_do , true)">完了</button>
+                    <button (click)="deleteTask(to_do)">削除</button>
+                  </div>
                 </div>
               </td>
             </tr>
@@ -35,22 +40,22 @@
         </div>
       </div>
     </div>
-  
-  
 
-  <div *ngIf="todoViewMode =='CpTask'">
-    <div *ngFor="let to_do of to_do_list">
-      <div *ngIf="to_do.isComplete">
-        <table>
-          <tr>
-            <td>
-              <div class="text">{{to_do.name}}<div class="listButton"><button (click)="changeIsCompleteStatus(to_do, false)">未完</button><button (click)="deleteTask(to_do)">削除</button></div>
-              </div>
-            </td>
-          </tr>
-        </table>
+
+
+    <div *ngIf="todoViewMode =='CpTask'">
+      <div *ngFor="let to_do of to_do_list">
+        <div *ngIf="to_do.isComplete">
+          <table>
+            <tr>
+              <td>
+                <div class="text">
+                  {{to_do.name}}<div class="listButton"><button (click)="changeIsCompleteStatus(to_do , false)">未完</button><button (click)="deleteTask(to_do)">削除</button></div>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
-
 </body>

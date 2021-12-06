@@ -51,14 +51,6 @@ export class NavMenuComponent {
     this.loginDisplay = this.authService.instance.getAllAccounts().length > 0;
   }
 
-  /*login() {
-    this.loginStatus = true;
-  }
-
-  logout() {
-    this.loginStatus = false;
-  }*/
-
   login(userFlowRequest?: RedirectRequest | PopupRequest) { //引数が使用される理由が分からないので一旦放置、動作が確認できたら引数を削除してテストしてみること
       if (this.msalGuardConfig.authRequest) {
         this.authService.loginRedirect({ ...this.msalGuardConfig.authRequest, ...userFlowRequest } as RedirectRequest); //引数が二つではなく、RedirectRequest１つ ...aでaをコピーしている。

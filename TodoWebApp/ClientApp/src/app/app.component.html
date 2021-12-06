@@ -1,6 +1,13 @@
+
 <body>
-  <app-nav-menu></app-nav-menu>
-  <div class="container">
-    <router-outlet></router-outlet>
-  </div>
+  <div *ngIf="isAuthFrowComplete">
+    <app-nav-menu></app-nav-menu>
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
+   </div>
+   <div *ngIf="!isAuthFrowComplete">
+      <h3>Loading...</h3>
+   </div>
 </body>
+

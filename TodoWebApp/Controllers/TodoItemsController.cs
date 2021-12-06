@@ -48,17 +48,25 @@ namespace TodoWebApp.Controllers
             return todoItem;
         }
 
+        public class GetSwitchIsComplete { 
+            public bool SwitchIsComplete { get; set; }
+        }
+
+
         // PUT: api/TodoItems/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutTodoItem(string id, TodoItem todoItem)
+        public async Task<IActionResult> PutTodoItem(string id , GetSwitchIsComplete switchIsComplete) //todoItemはそのままでよかった、、
         {
-            if (id != todoItem.Id)
+            string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var todoItem = await _context.TodoItems.SingleAsync((todoItem) => todoItem.UserId == userId &&  todoItem.Id == id);
+
+            if (todoItem == null)
             {
                 return BadRequest();
             }
 
-            todoItem.UserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value; //
+            todoItem.IsComplete = switchIsComplete.SwitchIsComplete;
 
             _context.Entry(todoItem).State = EntityState.Modified;
 

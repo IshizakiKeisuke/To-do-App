@@ -13,11 +13,16 @@ import { AddTodoItemRequest, TodoItemService } from './todoitem.service';
 })
                                                                                                                   
 export class HomeComponent implements OnInit {
-  to_do_list = [] ;
+  to_do_list = [];
+
+  loginDisplay = false;
+
 
   todoViewMode = "AllTask";
 
-  constructor(private todoItemService: TodoItemService) { }
+  constructor(
+    private todoItemService: TodoItemService,
+  ) { }
 
   ngOnInit(): void {
     this.showTodoItemList();
@@ -29,7 +34,6 @@ export class HomeComponent implements OnInit {
       this.to_do_list = to_do_items;
     });
   }
-
 
   input_task = new FormGroup({
     name: new FormControl(''),
@@ -52,9 +56,8 @@ export class HomeComponent implements OnInit {
     this.todoItemService.deleteTodoItem(todoItem).subscribe(() => this.showTodoItemList());
   }
 
-  changeIsCompleteStatus(todoItem:TodoItem, switchIsComplete: boolean) {
-    todoItem.isComplete = switchIsComplete;
-    this.todoItemService.changeTodoItem(todoItem).subscribe(
+  changeIsCompleteStatus(todoItem: TodoItem ,switchIsComplete) {
+    this.todoItemService.changeTodoItem(todoItem,switchIsComplete).subscribe(
       () =>this.showTodoItemList()
     );
   }

@@ -20,8 +20,8 @@ export class TodoItemService {
     return this.http.post<TodoItem>("https://localhost:44319/api/TodoItems",todoItem);
   }
 
-  changeTodoItem(todoItem:TodoItem){
-    return this.http.put<TodoItem>("https://localhost:44319/api/TodoItems/" + todoItem.id, todoItem);
+  changeTodoItem(todoItem: TodoItem, switchIsComplete: boolean) {
+    return this.http.put<TodoItem>("https://localhost:44319/api/TodoItems/" + todoItem.id, { switchIsComplete: switchIsComplete });
   }
 
   deleteTodoItem(todoItem:TodoItem){
