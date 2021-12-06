@@ -15,9 +15,6 @@ import { filter, takeUntil } from 'rxjs/operators';
 
 export class AppComponent {
   title = 'app';
-  isExpanded = false;
-  loginDisplay = false;
-  isIframe = false;
   isAuthFrowComplete = false;
   private readonly _destroying$ = new Subject<void>();
 
@@ -28,7 +25,6 @@ export class AppComponent {
   ) { }
 
   ngOnInit(): void {
-    this.isIframe = window !== window.parent && !window.opener;
 
     /**
      * You can subscribe to MSAL events as shown below. For more info,
