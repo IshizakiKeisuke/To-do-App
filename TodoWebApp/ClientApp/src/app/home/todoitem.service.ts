@@ -21,7 +21,7 @@ export class TodoItemService {
   }
 
   changeTodoItem(todoItem: TodoItem, switchIsComplete: boolean) {
-    return this.http.put<TodoItem>("api/TodoItems/" + todoItem.id, { witchIsComplete: switchIsComplete });
+    return this.http.put<TodoItem>("api/TodoItems/" + todoItem.id, { switchIsComplete: switchIsComplete });
   }
 
   deleteTodoItem(todoItem:TodoItem){
