@@ -95,11 +95,17 @@ namespace TodoWebApp.Controllers
         public async Task<ActionResult<TodoItem>> PostTodoItem(TodoItem todoItem)
         {
             todoItem.UserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (todoItem.UserId != null) { 
 
-            _context.TodoItems.Add(todoItem);
-            await _context.SaveChangesAsync();
+                _context.TodoItems.Add(todoItem);
+                await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetTodoItem", new { id = todoItem.Id }, todoItem);
+                return CreatedAtAction("GetTodoItem", new { id = todoItem.Id }, todoItem);
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
 
         // DELETE: api/TodoItems/5
