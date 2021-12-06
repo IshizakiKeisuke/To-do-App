@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
-import { TodoItem, AppUrl } from './todoitem.model';
+import { TodoItem } from './todoitem.model';
 
 export type AddTodoItemRequest = Omit<TodoItem, 'id'>;
 
@@ -13,19 +13,19 @@ export class TodoItemService {
   }
 
   getTodoItemList() {
-    return this.http.get<TodoItem[]>(AppUrl);
+    return this.http.get<TodoItem[]>("api/TodoItems");
   }
 
   addTodoItem(todoItem: AddTodoItemRequest){
-    return this.http.post<TodoItem>( AppUrl ,todoItem);
+    return this.http.post<TodoItem>( "api/TodoItems" ,todoItem);
   }
 
   changeTodoItem(todoItem: TodoItem, switchIsComplete: boolean) {
-    return this.http.put<TodoItem>( AppUrl + "/" + todoItem.id, { switchIsComplete: switchIsComplete });
+    return this.http.put<TodoItem>("api/TodoItems/" + todoItem.id, { witchIsComplete: switchIsComplete });
   }
 
   deleteTodoItem(todoItem:TodoItem){
-    return this.http.delete<TodoItem>( AppUrl + "/" + todoItem.id);
+    return this.http.delete<TodoItem>("api/TodoItems/" + todoItem.id);
   }
 
 }

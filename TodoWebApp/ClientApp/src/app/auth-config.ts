@@ -42,7 +42,7 @@ export const msalConfig: Configuration = {
 
 export const protectedResources = {
   todoListApi: {
-    endpoint: "https://localhost:44319/api/TodoItems", //https://localhost:44351がいらない可能性・無い場合は相対評価になる。
+    endpoint: "api/TodoItems", //https://localhost:44351がいらない可能性・無い場合は相対評価になる。
     scopes: ["https://ritskztodob2c.onmicrosoft.com/b0b9fde8-baf2-4812-868b-c28b911e5f3b/access_as_user"],
   },
 }

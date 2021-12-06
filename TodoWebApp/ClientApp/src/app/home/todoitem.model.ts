@@ -4,6 +4,5 @@ export interface TodoItem {
   isComplete:boolean
 }
 
-export const AppUrl = "https://localhost:44319/api/TodoItems";
 
 
