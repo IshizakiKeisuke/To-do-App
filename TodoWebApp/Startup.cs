@@ -27,15 +27,19 @@ namespace TodoWebApp
                opt.UseCosmos(Configuration.GetConnectionString("CosmosDb"), Configuration["DatabaseName"]));
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                   .AddMicrosoftIdentityWebApi(options =>
-                   {
+                   .AddMicrosoftIdentityWebApi(
+                options =>
+                    {
                        Configuration.Bind("AzureAdB2C", options);
                        
                        options.TokenValidationParameters.NameClaimType = "name";
 
                        
-                   },
-           options => { Configuration.Bind("AzureAdB2C", options); });
+                    },
+                options =>
+                    { 
+                        Configuration.Bind("AzureAdB2C", options); 
+                    });
 
             services.AddAuthorization();
 

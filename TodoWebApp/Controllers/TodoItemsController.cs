@@ -12,7 +12,7 @@ using TodoWebApp.Models;
 namespace TodoWebApp.Controllers
 {
     [Route("api/[controller]")]
-
+    [Authorize]
     [ApiController]
     public class TodoItemsController : ControllerBase
     {
@@ -27,7 +27,6 @@ namespace TodoWebApp.Controllers
         // GET: api/TodoItems
         
         [HttpGet]
-        [Authorize]
         public async Task<ActionResult<IEnumerable<TodoItem>>> GetTodoItems()
         {
             string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
