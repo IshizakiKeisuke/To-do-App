@@ -1,8 +1,5 @@
 import { BrowserCacheLocation, Configuration, LogLevel } from "@azure/msal-browser";
 
-/*msalConfig /終了
-loginRequest
-protectedResources*/
 
 const isIE = window.navigator.userAgent.indexOf("MSIE ") > -1 || window.navigator.userAgent.indexOf("Trident/") > -1; //ブラウザのなにか(ここから分からない)
 
@@ -20,14 +17,14 @@ export const b2cPolicies = {
 
 export const msalConfig: Configuration = {
   auth: {
-      clientId: '0997df26-a9ca-4055-a6c7-c74d05866f78', // This is the ONLY mandatory field that you need to supply.
-      authority: b2cPolicies.authorities.signUpSignIn.authority, // Defaults to "https://login.microsoftonline.com/common"
-      knownAuthorities: [b2cPolicies.authorityDomain], // Mark your B2C tenant's domain as trusted.
-      redirectUri: '/', // Points to window.location.origin. You must register this URI on Azure portal/App Registration.
+      clientId: '0997df26-a9ca-4055-a6c7-c74d05866f78', 
+      authority: b2cPolicies.authorities.signUpSignIn.authority, 
+      knownAuthorities: [b2cPolicies.authorityDomain], 
+      redirectUri: '/', 
   },
   cache: {
-      cacheLocation: BrowserCacheLocation.LocalStorage, // Configures cache location. "sessionStorage" is more secure, but "localStorage" gives you SSO between tabs.
-      storeAuthStateInCookie: isIE, // Set this to "true" if you are having issues on IE11 or Edge
+      cacheLocation: BrowserCacheLocation.LocalStorage, 
+      storeAuthStateInCookie: isIE, 
   },
   system: {
       loggerOptions: {
@@ -42,11 +39,11 @@ export const msalConfig: Configuration = {
 
 export const protectedResources = {
   todoListApi: {
-    endpoint: "api/TodoItems", //https://localhost:44351がいらない可能性・無い場合は相対評価になる。
+    endpoint: "api/TodoItems", 
     scopes: ["https://ritskztodob2c.onmicrosoft.com/b0b9fde8-baf2-4812-868b-c28b911e5f3b/access_as_user"],
   },
 }
 
-export const loginRequest = { //いらない可能性あり
+export const loginRequest = { 
   scopes: ["https://ritskztodob2c.onmicrosoft.com/b0b9fde8-baf2-4812-868b-c28b911e5f3b/access_as_user"]
 };
