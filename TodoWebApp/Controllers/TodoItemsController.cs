@@ -103,7 +103,7 @@ namespace TodoWebApp.Controllers
             }
             else
             {
-                return BadRequest();
+                return NotFound();
             }
         }
 
