@@ -55,7 +55,7 @@ namespace TodoWebApp.Controllers
         // PUT: api/TodoItems/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutTodoItem(string id , GetSwitchIsComplete switchIsComplete) //todoItemはそのままでよかった、、
+        public async Task<IActionResult> PutTodoItem(string id , GetSwitchIsComplete switchIsComplete) 
         {
             string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var todoItem = await _context.TodoItems.SingleAsync((todoItem) => todoItem.UserId == userId &&  todoItem.Id == id);
