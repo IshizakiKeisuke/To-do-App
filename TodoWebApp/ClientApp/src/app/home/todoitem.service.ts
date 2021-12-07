@@ -17,11 +17,11 @@ export class TodoItemService {
   }
 
   addTodoItem(todoItem: AddTodoItemRequest){
-    return this.http.post<TodoItem>("api/TodoItems",todoItem);
+    return this.http.post<TodoItem>( "api/TodoItems" ,todoItem);
   }
 
-  changeTodoItem(todoItem:TodoItem){
-    return this.http.put<TodoItem>("api/TodoItems/" + todoItem.id, todoItem);
+  changeTodoItem(todoItem: TodoItem, switchIsComplete: boolean) {
+    return this.http.put<TodoItem>("api/TodoItems/" + todoItem.id, { switchIsComplete: switchIsComplete });
   }
 
   deleteTodoItem(todoItem:TodoItem){
