@@ -37,7 +37,7 @@ export class AppComponent {
 
       )
       .subscribe(() => {
-        this.isAuthFrowComplete=true;
+        this.isAuthFrowComplete = true;
       });
   }
 
