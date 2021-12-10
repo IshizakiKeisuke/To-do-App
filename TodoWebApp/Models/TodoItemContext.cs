@@ -1,10 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using TodoWebApp.Models;
+
 
 namespace TodoWebApp.Models
 {
@@ -30,7 +26,6 @@ namespace TodoWebApp.Models
             builder.ToContainer("TodoItemContext");
             builder.HasPartitionKey(x => x.Id);
             builder.HasKey(x => x.Id);
-            //builder.HasKey("Id");↑はこれをやっている
         }
     }
 }

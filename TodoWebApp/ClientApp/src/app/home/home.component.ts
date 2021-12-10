@@ -1,9 +1,8 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, Injectable, OnInit, Output } from '@angular/core';
+import { Component,  OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 import { TodoItem } from './todoitem.model';
-import { AddTodoItemRequest, TodoItemService } from './todoitem.service';
+import { TodoItemService } from './todoitem.service';
 
 
 @Component({
